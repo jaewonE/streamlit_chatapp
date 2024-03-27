@@ -4,11 +4,11 @@ from time import sleep
 
 
 class GemmaModel():
-    def __init__(self, max_length=30):
+    def __init__(self, model_name='Gemma', max_length=30):
         self.tokenizer = AutoTokenizer.from_pretrained("google/gemma-2b")
         self.model = AutoModelForCausalLM.from_pretrained("google/gemma-2b")
         self.max_length = max_length
-        print("모델 로드 완료")
+        print(f"Load {model_name} model complete.")
 
     def generate_response(self, prompt):
         input_ids = self.tokenizer(prompt, return_tensors="pt")
@@ -29,7 +29,7 @@ class MockModel():
         self.max_length = max_length
         self.delay = delay
         sleep(init_delay)
-        print(f"{model_name} 모델 로드 완료")
+        print(f"Load {model_name} model complete.")
 
     def generate_response(self, prompt):
         sleep(self.delay)

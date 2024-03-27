@@ -6,7 +6,28 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 
-from model import GemmaModel, MockModel
+from model import *
+
+# """"""""""""""""""""""""  HYPERPARAMETERS  """"""""""""""""""""""""
+
+model_dict = {
+    "Mock1": {
+        'model': MockModel,
+        'args': {'model_name': "Mock1", 'delay': 1, 'init_delay': 1}
+    },
+    "Mock2": {
+        'model': MockModel,
+        'args': {'model_name': "Mock2", 'delay': 1, 'init_delay': 1}
+    },
+    "Gemma": {
+        'model': GemmaModel,
+        'args': {'model_name': 'Gemma', 'max_length': 30}
+    }
+}
+able_model_list = list(model_dict.keys())
+
+
+# """"""""""""""""""""""""  SET UP  """"""""""""""""""""""""
 
 st.set_page_config(page_title="ChatApp", page_icon="🤖", layout="wide")
 
@@ -28,9 +49,6 @@ if not os.path.exists("history"):
 
 with open("css/style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-
-able_model_list = ["mock1", "mock2", "gemma"]
 
 
 def init_app():
@@ -63,14 +81,8 @@ def init_json() -> dict:
 def load_model(model_name, **kwargs):
     model = None
     with st.spinner("Loading model..."):
-        if model_name == able_model_list[0]:
-            model = MockModel(model_name="Mock1", delay=1,
-                              init_delay=1, **kwargs)
-        elif model_name == able_model_list[1]:
-            model = MockModel(model_name="Mock2", delay=1,
-                              init_delay=1, **kwargs)
-        elif model_name == able_model_list[2]:
-            model = GemmaModel(**kwargs)
+        model = model_dict[model_name]['model'](
+            {**model_dict[model_name]['args'], **kwargs})
     if model == None:
         st.error("Please select a model.")
         st.stop()
@@ -80,7 +92,7 @@ def load_model(model_name, **kwargs):
 init_app()
 
 
-# Side Bar
+# """"""""""""""""""""""""  SIDE BAR  """"""""""""""""""""""""
 
 # New Chat button
 clear_button = st.sidebar.button("New Conversation", key="new_chat")
@@ -137,6 +149,8 @@ for record in reversed([os.path.join("history", f) for f in os.listdir("history"
         st.sidebar.button(history['messages'][0]['content'],
                           key=state, on_click=on_click_history, args=(record,))
 
+
+# """"""""""""""""""""""""  CHAT  """"""""""""""""""""""""
 
 # 컨테이너 생성
 response_container = st.container()
