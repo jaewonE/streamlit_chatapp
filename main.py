@@ -128,7 +128,7 @@ def on_click_history(file_path: str):
 
 # 채팅 기록
 st.sidebar.title("Chat History")
-for record in [os.path.join("history", f) for f in os.listdir("history") if f.endswith(".json")]:
+for record in reversed([os.path.join("history", f) for f in os.listdir("history") if f.endswith(".json")]):
     with open(record, 'r') as f:
         history = json.load(f)
         state = f"{datetime.fromtimestamp(history['time']).strftime('%Y/%m/%d %H:%M:%S')} | {history['model_name'][0]}"
