@@ -1,0 +1,13 @@
+section[data-testid='stSidebar'] div.stButton button {
+  background-color: white;
+  width: 100%;
+  font-weight: 600;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+}
+
+section[data-testid='stSidebar'] div.stButton button div p {
+  font-weight: 600;
+  text-align: left;
+}

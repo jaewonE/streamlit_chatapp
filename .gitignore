@@ -1,0 +1,13 @@
+# System files
+.DS_Store
+__pycache__
+__pycache__/
+*.pyc
+
+# trash file
+.trash
+.trash/
+
+# fonts
+fonts
+fonts/

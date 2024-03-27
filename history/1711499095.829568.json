@@ -1,0 +1,16 @@
+{
+  "time": 1711499095.829568,
+  "model_name": ["gemma", "gemma"],
+  "messages": [
+    { "role": "user", "content": "Who are you" },
+    {
+      "role": "assistant",
+      "content": "Who are you?\n\nI am a 20-something year old who is currently living in the UK. I am a student at the"
+    },
+    { "role": "user", "content": "I'm find thank you and you?" },
+    {
+      "role": "assistant",
+      "content": "I'm find thank you and you?\n\nAnswer:\n\nThank you for your question. I'm find\nthank you and you?<eos>"
+    }
+  ]
+}

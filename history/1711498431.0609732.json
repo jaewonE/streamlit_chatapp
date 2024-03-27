@@ -1,0 +1,10 @@
+{
+  "time": 1711498431.0609732,
+  "model_name": ["mock1", "mock1"],
+  "messages": [
+    { "role": "user", "content": "hello world1" },
+    { "role": "assistant", "content": "Mock response" },
+    { "role": "user", "content": "hello world2" },
+    { "role": "assistant", "content": "Mock response" }
+  ]
+}

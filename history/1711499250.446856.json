@@ -1,0 +1,11 @@
+{
+  "time": 1711499250.446856,
+  "model_name": ["gemma"],
+  "messages": [
+    { "role": "user", "content": "Do you know \uc190\ud765\ubbfc?" },
+    {
+      "role": "assistant",
+      "content": "Do you know \uc190\ud765\ubbfc?\n\nHe is a South Korean professional footballer who plays as a midfielder for the South Korean national team and the Premier League club Manchester City.\n\nHe is also known as the \u201cKorean Messi\u201d and \u201cKorean Maradona\u201d.\n\nHe is one of the most popular footballers in South Korea and has a huge fan following.\n\nHe is also one of the most successful footballers in South Korea.\n\nHe has won many awards and has been named the best"
+    }
+  ]
+}
